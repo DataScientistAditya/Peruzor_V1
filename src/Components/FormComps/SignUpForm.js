@@ -2,9 +2,9 @@ import React from "react";
 
 
 
-const SignUpFormComp=()=>{
+const SignUpFormComp=(props)=>{
     return(
-        <form className="Authform">
+        <form className="Authform" onSubmit={props.GotoPretest}>
             <li><input placeholder="Enter Your EMail" type="email"></input></li>
             <li><input placeholder="Enter Your Username" type="text"></input></li>
             <li><input placeholder="Enter Your Password" type="password"></input></li>

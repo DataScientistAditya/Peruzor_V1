@@ -170,11 +170,23 @@
     position: absolute;
     background-color: black;
     z-index: 4;
-    
+    border: 2px solid;
+    border-color: white;
+    border-radius: 10px;
 }
 .SpeakerButton{
     font-size: 18px;
     position: sticky;
     float: right;
     top:95%;
+}
+
+
+@media screen and (max-width:414px){
+    .ComputerInteractionArea .TextInputArea .SubmitButton{
+        left: 5%;
+    }
+    .ComputerInteractionArea .TextInputArea .Microphone_Starts{
+        left:2%;
+    }
 }

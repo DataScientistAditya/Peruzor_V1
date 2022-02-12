@@ -9,6 +9,7 @@ const PretestPage=(props)=>{
     
     return(
         <div id="Pretest">
+            
             <div id="Bg">
             </div>
             <div id="PretestGroup">

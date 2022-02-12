@@ -1,7 +1,9 @@
 import React,{useState} from "react";
 import "./PopUp.css";
+import { useNavigate } from "react-router-dom";
 
 const PopUpcomp=(props)=>{
+    let nav = useNavigate();
     return(
         <div className="Popup" style={props.Display}>
             <div className="TextPopUp">

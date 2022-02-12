@@ -4,7 +4,7 @@ import useRecorder from "../SpeechRecognitionComp/UseRecorder";
 import SpeechRecognitionsComp from "../SpeechRecognitionComp/SpeechRecognitions";
 import PopUpcomp from "../Popups.js/Popups";
 import { useSpeechSynthesis } from 'react-speech-kit';
-import { format } from "react-string-format";
+import { useNavigate } from "react-router-dom";
 
 
 const ComputerGeneratedProp=(props)=>{
@@ -25,8 +25,12 @@ const ComputerGeneratedProp=(props)=>{
     const [IsDiabled,SetButtonDisabled] = useState("");
     const [IsWarning, SetWarning] = useState({color:"yellow",visibility:"hidden"});
     const [audioURL, isRecording, startRecording, stopRecording] = useRecorder();
-    const [textcontent,SetTextContent] = useState("");
+    const [IsIntroOver,SetIntroOver] = useState(false);
+
     const {speak} = useSpeechSynthesis();
+    let nav = useNavigate();
+    const username = "aditya";//Dummy Username will be deleted after implementing the Auth System
+
     const TextInputHandler =(event)=>{
         SetTextInput(event.target.value);
     }
@@ -50,10 +54,12 @@ const ComputerGeneratedProp=(props)=>{
     if (isThirdDisplay) {
         setInterval(() => {
             SetFourthContentDispaly({visibility:"visible"});
-          }, 1000);
+            SetIntroOver(true);
+        }, 1000);
     };
 
     let RecordingPopUps = <p></p>
+
     const RecordingPopup=()=>{
         SetMicrophonePopUp(true);
         SetDisplaySpeech({visibility:"visible"});
@@ -106,9 +112,12 @@ const ComputerGeneratedProp=(props)=>{
         
     };  
 
-
-
-    
+    if (IsIntroOver) {
+        setInterval(() => {
+           nav("/letters-pretest/" + username);
+        }, 2000);
+    };
+ 
 
 
     return(
@@ -136,7 +145,7 @@ const ComputerGeneratedProp=(props)=>{
                     </p></li>
                 </ul>
                 <ul className="ButtonsSpeak">
-                    <button onClick={()=>speak({text:TextInput})} className="SpeakerButton"><i class="fas fa-volume-up"></i></button>
+                    <button onClick={()=>speak({text:TextInput })} className="SpeakerButton"><i className="fas fa-volume-up"></i></button>
                 </ul>
                 
             </div>
